@@ -14,3 +14,5 @@ steps:
   inputs:
     channel: 'beta'
 - bash: ./build-ipa.zsh
+  env:
+    FLUTTER_TOOL_PATH: $(FlutterToolPath)

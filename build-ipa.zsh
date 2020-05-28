@@ -3,8 +3,8 @@
 # See https://github.com/flutter/flutter/issues/26279
 # and https://github.com/flutter/flutter/issues/28802
 
-echo FlutterToolPath:
-echo $FlutterToolPath
+echo FLUTTER_TOOL_PATH:
+echo $FLUTTER_TOOL_PATH
 
 export APP_NAME="Connect4"
 
