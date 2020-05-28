@@ -33,19 +33,19 @@ class GameViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void dropInColumn(int gridIndex) async {
+  Future<void> dropInColumn(int gridIndex) async {
     if (_win != null) {
       return;
     }
 
     if (!_playersTurn) {
       setBusy(true);
-      await Future.delayed(Duration(milliseconds: 750));
+      await Future<dynamic>.delayed(const Duration(milliseconds: 750));
       setBusy(false);
     }
 
-    final int col = gridIndex % 7;
-    final int row = _getEmptyRow(col);
+    final col = gridIndex % 7;
+    final row = _getEmptyRow(col);
     if (row == null) {
       if (!_playersTurn) {
         return dropInColumn(_random.nextInt(ROWS * COLUMNS));
@@ -88,12 +88,12 @@ class GameViewModel extends BaseViewModel {
     _gameStatus = _playersTurn ? 'Your turn' : 'Computer\'s turn';
     notifyListeners();
     if (!_playersTurn) {
-      dropInColumn(_random.nextInt(ROWS * COLUMNS));
+      await dropInColumn(_random.nextInt(ROWS * COLUMNS));
     }
   }
 
   List<int> _hasConsecutiveFour(List<bool> elements, bool match) {
-    final List<int> indexes = [];
+    final indexes = <int>[];
     elements.asMap().forEach((index, value) {
       if (value == match) {
         indexes.add(index);
@@ -104,7 +104,7 @@ class GameViewModel extends BaseViewModel {
       return null;
     }
 
-    int previous = indexes[0];
+    var previous = indexes[0];
     for (var i = 1; i < indexes.length; i++) {
       if (indexes[i] != previous + 1) {
         return null;
@@ -128,12 +128,12 @@ class GameViewModel extends BaseViewModel {
   }
 
   Color getCellColor(int gridIndex) {
-    final int row = (gridIndex / 7).floor();
-    final int col = gridIndex % 7;
-    final bool player = _grid[row][col];
+    final row = (gridIndex / 7).floor();
+    final col = gridIndex % 7;
+    final player = _grid[row][col];
     if (_win != null) {
-      for (List coord in _win) {
-        if (ListEquality().equals(coord, [row, col])) {
+      for (var coord in _win) {
+        if (const ListEquality<int>().equals(coord, <int>[row, col])) {
           return Color(player ? 0xFF770000 : 0xFF777700);
         }
       }
