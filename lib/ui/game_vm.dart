@@ -28,7 +28,7 @@ class GameViewModel extends BaseViewModel {
           COLUMNS,
           (_) => null,
         ));
-    _gameStatus = 'Your turn.';
+    _gameStatus = 'Your turn';
     _win = null;
     notifyListeners();
   }
