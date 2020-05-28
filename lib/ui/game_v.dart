@@ -10,10 +10,10 @@ class GameView extends StatelessWidget {
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Text('Connect 4'),
+          title: const Text('Connect 4'),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.replay),
+              icon: const Icon(Icons.replay),
               onPressed: model.resetGame,
             )
           ],
@@ -48,7 +48,7 @@ class GameView extends StatelessWidget {
                 child: Center(
                   child: Text(
                     model.gameStatus,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
