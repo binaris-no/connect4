@@ -3,6 +3,9 @@
 # See https://github.com/flutter/flutter/issues/26279
 # and https://github.com/flutter/flutter/issues/28802
 
+echo FlutterToolPath:
+echo $FlutterToolPath
+
 export APP_NAME="Connect4"
 
 mkdir -p dist
