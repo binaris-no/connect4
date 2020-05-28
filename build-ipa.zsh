@@ -3,15 +3,19 @@
 # See https://github.com/flutter/flutter/issues/26279
 # and https://github.com/flutter/flutter/issues/28802
 
-echo FLUTTER_TOOL_PATH:
-echo $FLUTTER_TOOL_PATH
-
-export APP_NAME="Connect4"
+APP_NAME="Connect4"
 
 mkdir -p dist
 
-alias f="flutter"
+if [ -z "$FLUTTER_TOOL_PATH" ]
+then
+      alias f="flutter"
+else
+      alias f="$FLUTTER_TOOL_PATH/flutter"
+fi
+
 f clean
+
 f build ios --no-codesign \
 && pushd ios > /dev/null \
 && echo -e '\n* Building archive...\n' \
