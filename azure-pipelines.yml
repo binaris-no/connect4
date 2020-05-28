@@ -10,4 +10,4 @@ pool:
   vmImage: 'macos-latest'
 
 steps:
-- bash: build-ipa.sh
+- bash: ./build-ipa.sh
