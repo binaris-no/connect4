@@ -9,14 +9,15 @@ mkdir -p dist
 
 if [ -z "$FLUTTER_TOOL_PATH" ]
 then
-      alias f="flutter"
+  alias f="flutter"
 else
-      alias f="$FLUTTER_TOOL_PATH/flutter"
+  alias f="$FLUTTER_TOOL_PATH/flutter"
 fi
 
 f clean
 
-f build ios --no-codesign \
+f analyze \
+&& f build ios --no-codesign \
 && pushd ios > /dev/null \
 && echo -e '\n* Building archive...\n' \
 && xcodebuild -quiet -workspace Runner.xcworkspace -scheme Runner -sdk iphoneos -configuration Release CODE_SIGNING_ALLOWED="NO" archive -archivePath ../build/ios/Runner.xcarchive \
