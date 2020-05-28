@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # See https://github.com/flutter/flutter/issues/26279
 # and https://github.com/flutter/flutter/issues/28802
