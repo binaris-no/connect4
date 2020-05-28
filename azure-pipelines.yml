@@ -33,3 +33,14 @@ steps:
 - bash: ./build-ipa.zsh
   env:
     FLUTTER_TOOL_PATH: $(FlutterToolPath)
+
+- task: CopyFiles@2
+  inputs:
+    contents: 'dist/**/*.ipa'
+    targetFolder: $(Build.ArtifactStagingDirectory)
+    overWrite: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: 'iOS'
