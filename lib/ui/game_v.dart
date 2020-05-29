@@ -19,7 +19,7 @@ class GameView extends StatelessWidget {
           ],
         ),
         body: Container(
-          color: Colors.blue,
+          color: Colors.blueGrey,
           child: Column(
             children: <Widget>[
               GridView.builder(
